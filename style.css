@@ -1,0 +1,162 @@
+/* Custom styles on top of Tailwind */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c084fc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9333ea;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* Name Card Styles */
+.name-card {
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+.name-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading animation enhancement */
+.loading-shimmer {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 0%,
+        #f8f8f8 50%,
+        #f0f0f0 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* Form input focus styles */
+input:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+}
+
+/* Custom styles for form elements */
+input::placeholder, select::placeholder {
+    color: #9ca3af;
+}
+
+/* Button hover effect */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Results animation */
+.result-item {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Staggered animation delays for results */
+.result-item:nth-child(1) { animation-delay: 0.1s; }
+.result-item:nth-child(2) { animation-delay: 0.2s; }
+.result-item:nth-child(3) { animation-delay: 0.3s; }
+.result-item:nth-child(4) { animation-delay: 0.4s; }
+.result-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Error message animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Custom styles for name cards */
+.name-meaning {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.name-origin {
+    font-size: 0.9em;
+    color: #8b5cf6;
+}
+
+.name-pronunciation {
+    font-family: monospace;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.similar-names {
+    font-size: 0.85em;
+    color: #6b7280;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .name-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none;
+    }
+    
+    .name-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+.screen-reader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
