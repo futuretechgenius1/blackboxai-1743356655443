@@ -68,6 +68,10 @@ function constructPrompt(formData) {
         prompt += `- Parent Names: ${formData.parentName1} and ${formData.parentName2}\n`;
     }
     
+    if (formData.startingLetter) {
+        prompt += `- Starting Letter: ${formData.startingLetter.toUpperCase()}\n`;
+    }
+    
     if (formData.numerology) {
         prompt += `- Lucky Number: ${formData.numerology}\n`;
     }
@@ -144,6 +148,7 @@ form.addEventListener('submit', async (e) => {
         length: form.length.value,
         parentName1: form.parentName1.value,
         parentName2: form.parentName2.value,
+        startingLetter: form.startingLetter.value,
         numerology: form.numerology.value,
         style: form.style.value
     };
