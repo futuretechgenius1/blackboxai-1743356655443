@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Baby Name Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-purple-50 min-h-screen">
+    <header class="text-center py-10 px-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-purple-800 mb-4">Unique Baby Name Generator</h1>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Find the perfect name for your little one with our AI-powered name generator. Get unique, meaningful, and culturally diverse suggestions.</p>
+    </header>
+
+    <main class="container mx-auto px-4 pb-16">
+        <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <form id="nameGeneratorForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Gender Selection -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Gender</label>
+                        <select name="gender" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Gender</option>
+                            <option value="Boy">Boy</option>
+                            <option value="Girl">Girl</option>
+                            <option value="Unisex">Unisex</option>
+                        </select>
+                    </div>
+
+                    <!-- Origin/Culture -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Origin/Culture</label>
+                        <select name="origin" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Origin</option>
+                            <option value="Indian">Indian</option>
+                            <option value="American">American</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Greek">Greek</option>
+                            <option value="Latin">Latin</option>
+                            <option value="Hebrew">Hebrew</option>
+                        </select>
+                    </div>
+
+                    <!-- Meaning/Theme -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Meaning/Theme</label>
+                        <select name="meaning" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Theme</option>
+                            <option value="Love">Love</option>
+                            <option value="Strength">Strength</option>
+                            <option value="Nature">Nature</option>
+                            <option value="Wisdom">Wisdom</option>
+                            <option value="Light">Light</option>
+                            <option value="Peace">Peace</option>
+                            <option value="Joy">Joy</option>
+                        </select>
+                    </div>
+
+                    <!-- Name Length -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Name Length</label>
+                        <select name="length" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Length</option>
+                            <option value="Short">Short (3-5 letters)</option>
+                            <option value="Medium">Medium (6-8 letters)</option>
+                            <option value="Long">Long (9+ letters)</option>
+                        </select>
+                    </div>
+
+                    <!-- Parent Names (Optional) -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Parent Names (Optional)</label>
+                        <div class="space-y-2">
+                            <input type="text" name="parentName1" placeholder="Parent 1's name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <input type="text" name="parentName2" placeholder="Parent 2's name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                    </div>
+
+                    <!-- Numerology -->
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Lucky Number (Optional)</label>
+                        <input type="number" name="numerology" min="1" max="9" placeholder="Enter a number (1-9)" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+
+                    <!-- Style Preference -->
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 font-medium mb-2">Style Preference</label>
+                        <select name="style" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Select Style</option>
+                            <option value="Trendy">Trendy/Modern</option>
+                            <option value="Classic">Classic/Traditional</option>
+                            <option value="Mythological">Mythological</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button type="submit" class="bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transform transition hover:scale-105">
+                        Generate Names
+                        <i class="fas fa-magic ml-2"></i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="hidden text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-600"></div>
+                <p class="text-gray-600 mt-4">Generating perfect names for your little one...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 my-4 rounded">
+                <p class="font-medium">Oops! Something went wrong.</p>
+                <p id="errorText" class="text-sm"></p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden mt-8">
+                <h2 class="text-2xl font-bold text-purple-800 mb-6">Suggested Names</h2>
+                <div id="namesList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Name suggestions will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 text-gray-600">
+        <p>© 2024 Baby Name Generator. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
